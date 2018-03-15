@@ -1,5 +1,5 @@
-# stellarator
-Cowrie exchange API for converting between fiat currencies and crypto currencies
+# Stellarator
+Cowrie exchange API for converting between fiat currencies and crypto currencies.
 Cowrie exchange is a cryptocurrency exchange that enables instant conversion between fiat money (Naira NGN) and cryptocurrency (Stellar XLM)
 https://xlm-ngn.com
 
