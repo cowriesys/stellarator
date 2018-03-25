@@ -20,7 +20,7 @@ Asset|Domain|Issuer
 NGNT|cowrie.exchange|GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD
 
 ## API Structure
-The airtime API is based on a HTTP/REST architecture. API clients issue HTTP GET requests with parameters specified in the query string. API responses use standard HTTP response codes with messages encoded in JSON format.
+The Cowrie exchange API is based on a HTTP/REST architecture. API clients issue HTTP GET requests with parameters specified in the query string. API responses use standard HTTP response codes with messages encoded in JSON format.
 
 # Exchange Fiat for Crypto Request
 https://api.cowrie.exchange/fiat/crypto?fiat=NGN&crypto=NGNT&address=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB
