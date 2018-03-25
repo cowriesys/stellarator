@@ -138,9 +138,6 @@ A failed request for any of the APIs will result in one of the following HTTP re
 
 HTTP Code|HTTP Status|Description
 ---------|-----------|------------
-400|Bad Request|Signature does not match or one or more query parameters is incorrect 
-402|Payment Required|Insufficient balance, client account requires payment 
-403|Forbidden|One or more required headers are missing
-404|Not Found|Network and/or MSISDN are incorrect
-409|Conflict|Nonce has been used before 
-500|Server Error|The server encountered an error 
+400|Bad Request|one or more query parameters is incorrect
+404|Not Found|exchange pair not available
+500|Server Error|the server encountered an error 
