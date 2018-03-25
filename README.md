@@ -110,6 +110,7 @@ To credit account: GTBank account 0005538936 from your XLM wallet, send a paymen
 
 ## Bank Sort Codes
 The 6 digit bank sort codes are listed here. The bank_code parameter must be from  this list.
+
 Bank|Sort Code
 ----|---------
 AccessBank|000014
