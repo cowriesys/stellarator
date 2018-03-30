@@ -19,6 +19,8 @@ Asset|Domain|Issuer
 -----|------|------
 NGNT|cowrie.exchange|GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD
 
+[Explore NGNT statistics](https://stellar.expert/explorer/public/asset/NGNT-GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD)
+
 ## API Structure
 The Cowrie exchange API is based on a HTTP/REST architecture. API clients issue HTTP GET requests with parameters specified in the query string. API responses use standard HTTP response codes with messages encoded in JSON format.
 
