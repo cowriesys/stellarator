@@ -143,4 +143,11 @@ HTTP Code|HTTP Status|Description
 ---------|-----------|------------
 400|Bad Request|one or more query parameters is incorrect
 404|Not Found|exchange pair not available
-500|Server Error|the server encountered an error 
+500|Server Error|the server encountered an error
+
+## Cowrie Exchange Team
+Cowrie Exchange was built by
+* [Damola Taiwo](https://www.linkedin.com/in/damolataiwo)
+* [Dolapo Taiwo](https://www.linkedin.com/in/dolapo-taiwo-94b005a)
+* [Gbubemi Agbeyegbe](https://www.linkedin.com/in/gbubemi-agbeyegbe-ab785912)
+* [Ladi Okordudu](https://www.linkedin.com/in/ladicowrie)
