@@ -1,13 +1,13 @@
 # Stellarator
-### Cowrie exchange API for converting between fiat currencies and crypto currencies.
-[Cowrie exchange](https://cowrie.exchange) is a cryptocurrency exchange that enables instant conversion between fiat money (Naira NGN) and cryptocurrency ([Stellar XLM](https://stellar.org))
+### Cowrie Exchange API for converting between fiat currencies and crypto currencies.
+[Cowrie Exchange](https://cowrie.exchange) is a cryptocurrency exchange that enables instant conversion between fiat money (Naira NGN) and cryptocurrency ([Stellar XLM](https://stellar.org))
 
 
-Cowrie exchange acts as a bridge connecting any Nigerian bank account to any crypto exchange or wallet.
-This repository documents the Cowrie exchange API. This API exposes the Cowrie exchange service to other wallets/services.
+Cowrie Exchange acts as a bridge connecting any Nigerian bank account to any crypto exchange or wallet.
+This repository documents the Cowrie Exchange API. This API exposes the Cowrie Exhange service to other wallets/services.
 Any wallet/service provider can connect any Nigerian bank account using this API.
 # NGNT
-Cowrie exchange issuses the NGNT token on the Stellar network.
+Cowrie Exhange issuses the NGNT token on the Stellar network.
 NGNT is an asset backed digital token issued on the Stellar decentralized network, it is pegged to the Naira (NGN) on a 1:1 ratio, it digitizes the Naira giving it the benefits of a decentralized token and traditional fiat.
 
 NGNT offers a decentralized method of storing and exchanging value globally, securely and in an instant using an accounting unit familiar to people, giving holders total control of their money.  This gives it the properties of cryptocurrency but is forever tied to the value price of NGN.
@@ -22,7 +22,7 @@ NGNT|cowrie.exchange|GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD
 [Explore NGNT statistics](https://stellar.expert/explorer/public/asset/NGNT-GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD)
 
 ## API Structure
-The Cowrie exchange API is based on a HTTP/REST architecture. API clients issue HTTP GET requests with parameters specified in the query string. API responses use standard HTTP response codes with messages encoded in JSON format.
+The Cowrie Exhange API is based on a HTTP/REST architecture. API clients issue HTTP GET requests with parameters specified in the query string. API responses use standard HTTP response codes with messages encoded in JSON format.
 
 # Exchange Fiat for Crypto Request
 https://api.cowrie.exchange/fiat/crypto?fiat=NGN&crypto=NGNT&address=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB
