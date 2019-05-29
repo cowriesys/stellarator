@@ -4,7 +4,7 @@ StellarSDK.Network.usePublicNetwork();
 
 let NGNT = {asset:'NGNT', issuer: 'GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD'};
 
-let senderAccountSecret = 'SC6BY673JBG52I5WDC5XSD5KGYMIJXJDMWXABGO7WJIH3FDN2N2G4MKB';
+let senderAccountSecret = 'SECRET-KEY';
 let destinationAccountAddress = 'GB3B2EQSBR4A5WFSR6KBDSTSZNCZLKGEIBI7HCM3XZIGAFCEINAK3QUT';
 
 let senderAccount = StellarSDK.Keypair.fromSecret(senderAccountSecret);
