@@ -13,7 +13,7 @@ var bank = 'GTBank';
 
 /**WIHDRAW NGNT**/
 Transfer.withdraw('bank_account', NGNT.asset, bankAccountNumber, bank, null, null, null)
-.then(function(withdraw) {
+.then((withdraw) => {
 
     horizon.loadAccount(senderAccount.publicKey())
     .then((account) => {

@@ -6,6 +6,6 @@ var destinationAccountAddress = 'GB3B2EQSBR4A5WFSR6KBDSTSZNCZLKGEIBI7HCM3XZIGAFC
 var email = 'gdini2003@gmail.com';
 
 Transfer.deposit(NGNT.asset, destinationAccountAddress,  null, null, email)
-.then(function(deposit) {
+.then((deposit) => {
     console.log(JSON.stringify(deposit));
 });
