@@ -93,8 +93,8 @@ Name|Description
 ----|-----------
 asset_code|Asset code to withdraw (NGNT)
 account|Stellar public key address that initiates the withdaw request
-dest|6 digit bank sort code
-dest_extra|10 digit nuban account number
+dest|10 digit nuban account number
+dest_extra|6 digit bank sort code
 memo|Stellar memo (optional)
 memo_type|Stellar memo type id, text, hash (option)
 type|Type of deposit, either bank or card (optional)
