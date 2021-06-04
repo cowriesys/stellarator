@@ -27,19 +27,20 @@ The Cowrie Exhange API is based on a HTTP/REST architecture. API clients issue H
 # Deposit Request
 Call this endpoint to initiate a deposit
 ```
-https://api.cowrie.exchange/transfer/deposit?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB
+https://api.cowrie.exchange/transfer/deposit?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&email_address=pgray@email.com&full_name=Polly%20Gray&amount=1000
 ```
 
 ## Request Parameters
 Name|Description
 ----|-----------
-asset_code|sset code to deposit (NGNT)
+asset_code|asset code to deposit (NGNT)
 amount|Amount to deposit
 account|Stellar public key address
 memo|Stellar memo (optional)
 memo_type|Stellar memo type id, text, hash (option)
 type|Type of deposit, either bank or card (optional)
-email_address| Email address for notifications (optional)
+email_address| Email address for notifications
+full_name| First and last name
 
 # Deposit Response
 A successful deposit request will return the following JSON encoded response
