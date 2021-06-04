@@ -86,7 +86,7 @@ Launch your internet banking website or mobile banking app and make a transfer u
 # Withdraw Request
 Call this endpoint to initiate a withdrawal
 ```
-https://api.cowrie.exchange/transfer/withdraw?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&dest=000013&dest_extra=0005538936
+https://api.cowrie.exchange/transfer/withdraw?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&dest=0005538936&dest_extra=000013
 ```
 
 ## Request Parameters
