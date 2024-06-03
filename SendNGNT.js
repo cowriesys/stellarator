@@ -1,6 +1,6 @@
 const StellarSDK = require('stellar-sdk');
-const horizon = new StellarSDK.Server('https://horizon-testnet.stellar.org');
-StellarSDK.Network.useTestNetwork();
+const horizon = new StellarSDK.Server('https://horizon.stellar.org');
+StellarSDK.Network.usePublicNetwork();
 
 let NGNT = {asset:'NGNT', issuer: 'GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD'};
 
