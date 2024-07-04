@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
-const StellarSDK = require('stellar-sdk');
+const StellarSdk = require('stellar-sdk');
 const querystring = require('querystring');
-const { send } = require('process');
 
 const networkPassphrase = 'Public Global Stellar Network ; September 2015';
 

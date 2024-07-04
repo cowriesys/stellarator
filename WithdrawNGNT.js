@@ -1,14 +1,14 @@
 const Transfer = require('./SEP6');
-const StellarSDK = require('stellar-sdk');
-const horizon = new StellarSDK.Server('https://horizon.stellar.org');
-StellarSDK.Network.usePublicNetwork();
+const StellarSdk = require('stellar-sdk');
+const horizon = new StellarSdk.Server('https://horizon.stellar.org');
+const networkPassphrase = 'Public Global Stellar Network ; September 2015';
 
 let NGNT = {asset:'NGNT', issuer: 'GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD'};
 
 let senderAccountSecret = 'SECRET-KEY';
-let senderAccount = StellarSDK.Keypair.fromSecret(senderAccountSecret);
+let senderAccount = StellarSdk.Keypair.fromSecret(senderAccountSecret);
 
-var bankAccountNumber = '0005538936';
+var bankAccountNumber = '005509890';
 var bank = 'GTBank';
 
 /**WIHDRAW NGNT**/
@@ -17,11 +17,11 @@ Transfer.withdraw('bank_account', NGNT.asset, bankAccountNumber, bank, null, nul
 
     horizon.loadAccount(senderAccount.publicKey())
     .then((account) => {
-        var transaction = new StellarSDK.TransactionBuilder(account, opts={fee:100})
-            .addMemo(StellarSDK.Memo.text(withdraw.memo))
-            .addOperation(StellarSDK.Operation.payment({
+        var transaction = new StellarSdk.TransactionBuilder(account, opts={fee:100,networkPassphrase:networkPassphrase})
+            .addMemo(StellarSdk.Memo.text(withdraw.memo))
+            .addOperation(StellarSdk.Operation.payment({
                 destination: withdraw.account_id,
-                asset: new StellarSDK.Asset(NGNT.asset, NGNT.issuer),
+                asset: new StellarSdk.Asset(NGNT.asset, NGNT.issuer),
                 amount: '1200'
             })).setTimeout(0).build();
     

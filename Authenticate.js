@@ -1,14 +1,14 @@
-const StellarSDK = require('stellar-sdk');
-const Authetication = require('./SEP10');
+const StellarSdk = require('stellar-sdk');
+const Authentication = require('./SEP10');
 
 let accountSecret = 'SECRET-KEY';
-let account = StellarSDK.Keypair.fromSecret(accountSecret);
+let account = StellarSdk.Keypair.fromSecret(accountSecret);
 
-Authetication.challenge(account)
+Authentication.challenge(account)
 .then((signed) => {
     console.log('signed: ' + signed);
 
-    Authetication.token(signed)
+    Authentication.token(signed)
     .then((token) => {
         console.log('token: ' + token);
     })

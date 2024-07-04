@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const StellarSDK = require('stellar-sdk');
+const StellarSdk = require('stellar-sdk');
 const querystring = require('querystring');
 
 const networkPassphrase = 'Public Global Stellar Network ; September 2015';
@@ -26,7 +26,7 @@ module.exports = {
             }
         }).then((body) => {
             //console.log('body: ' + JSON.stringify(body));
-            var transaction = StellarSDK.TransactionBuilder.fromXDR(body.transaction, networkPassphrase);
+            var transaction = StellarSdk.TransactionBuilder.fromXDR(body.transaction, networkPassphrase);
             transaction.sign(account);
             return transaction.toXDR();
         }).catch((error) => {
