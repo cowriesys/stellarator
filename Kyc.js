@@ -6,7 +6,7 @@ const Authentication = require('./SEP10');
 
 const url = 'https://api.cowrie.exchange/kyc/customer';
 
-let accountSecret = 'SECRET-KEY';
+let accountSecret = 'SECRET-KEY'; // Replace with your account secret key
 let account = StellarSdk.Keypair.fromSecret(accountSecret);
 
 Authentication.challenge(account)
@@ -18,11 +18,13 @@ Authentication.challenge(account)
         console.log('token: ' + token);
 
         //SEP12 HERE        
-        const fileName = 'passport.jpg';
+        const fileName = 'uploads\\passport.jpg';
+        console.log('fileName', fileName);        
         const data = fs.readFileSync(fileName);
+        console.log('data', data);
         const form = new FormData();
         form.append('account', account.publicKey());
-        form.append('jwt', token);
+        //form.append('jwt', token);
         form.append('kyc_type', 'Individual');
         form.append('first_name', 'JOHNATHAN');
         form.append('last_name', 'CASH');

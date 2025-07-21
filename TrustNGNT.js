@@ -4,7 +4,7 @@ const networkPassphrase = 'Public Global Stellar Network ; September 2015';
 
 let NGNT = {asset:'NGNT', issuer: 'GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD'};
 
-let destinationAccountSecret = 'SECRET-KEY';
+let destinationAccountSecret = 'SECRET-KEY'; // Replace with your destination account secret key
 let destinationAccount = StellarSdk.Keypair.fromSecret(destinationAccountSecret);
 
 

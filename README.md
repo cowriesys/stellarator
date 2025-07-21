@@ -1,6 +1,6 @@
 # Stellarator
 ### Cowrie Exchange API for depositing and withdrawing NGNT digital currency.
-[Cowrie Exchange](https://cowrie.exchange) is a cryptocurrency exchange that enables instant conversion between fiat money (Naira NGN) and cryptocurrency ([Stellar XLM](https://stellar.org))
+Cowrie Exchange API enables instant conversion between fiat money (Naira NGN) and digital currency.
 
 
 Cowrie Exchange acts as a bridge connecting any Nigerian bank account to any Stellar wallet.
@@ -10,7 +10,7 @@ Any Stellar based wallet/service provider can connect any Nigerian bank account 
 Cowrie Exhange issuses the NGNT token on the Stellar network.
 NGNT is an asset backed digital token issued on the Stellar decentralized network. It is pegged to the Nigerian Naira (NGN) at a 1:1 ratio. It digitizes the Naira giving it the benefits of both a decentralized token and traditional fiat.
 
-NGNT offers a decentralized method of storing and exchanging value globally, securely and in an instant using an accounting unit familiar to people, giving holders total control of their money.  This gives it the properties of cryptocurrency but is forever tied to the value price of NGN.
+NGNT offers a decentralized method of storing and exchanging value globally, securely and in an instant using an accounting unit familiar to people, giving holders total control of their money.  This gives it the properties of cryptocurrency but is pegged to the value price of NGN.
 
 With NGNT it is now possible to integrate the NGN fiat system with distributed digital services. NGNT is tradable on the [SDEX (Stellar Decentralized Exchange)](https://www.stellarx.com/markets/NGNT:GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD/native)
 
@@ -27,20 +27,15 @@ The Cowrie Exhange API is based on a HTTP/REST architecture. API clients issue H
 # Deposit Request
 Call this endpoint to initiate a deposit
 ```
-https://api.cowrie.exchange/transfer/deposit?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&email_address=pgray@email.com&full_name=Polly%20Gray&amount=1000
+https://api.cowrie.exchange/transfer/deposit?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&amount=1000
 ```
 
 ## Request Parameters
 Name|Description
 ----|-----------
 asset_code|asset code to deposit (NGNT)
-amount|Amount to deposit
 account|Stellar public key address
-memo|Stellar memo (optional)
-memo_type|Stellar memo type id, text, hash (option)
-type|Type of deposit, either bank or card (optional)
-email_address| Email address for notifications
-full_name| First and last name
+amount|Amount to deposit
 
 # Deposit Response
 A successful deposit request will return the following JSON encoded response
@@ -48,7 +43,7 @@ A successful deposit request will return the following JSON encoded response
 **HTTP 200 OK**
 ```javascript
 {
-    eta: '2 minutes',
+    eta: 120,
     min_amount: 200,
     fee_fixed: 100,
     how: 'Please transfer your funds to Cowrie Integrated Systems account at GTBank. The account number is 0174408645. Your deposit reference is 043558D, please put this as your transfers remarks/memo.',    
@@ -57,14 +52,14 @@ A successful deposit request will return the following JSON encoded response
         bank_name: 'Guaranty Trust Bank',
         account_name: 'Cowrie Integrated Systems Limited',
         account_number: '0174408645',
-        deposit_ref: '043558D'
+        deposit_ref: '9d84769a'
     }
 }
 ```
 
 Response Fields|Description
 ----|----------------------
-eta|Expected Time of Arrival
+eta|Expected Time of Arrival in seconds
 min_amount|The minimum acceptable deposit amount
 fee_fixed|Fee charged for this deposit
 how|Deposit instructions
@@ -75,18 +70,16 @@ account_number|Bank account number to transfer deposit
 
 
 
-
 ## NGNT Deposit Instructions
 Launch your internet banking website or mobile banking app and make a transfer using these details
 * Bank Name: Guaranty Trust Bank
 * Account Name: Cowrie Integrated Systems Limited
 * Account Number: 0174408645
-* Narration/Description/Remarks: 043558D
 
 # Withdraw Request
 Call this endpoint to initiate a withdrawal
 ```
-https://api.cowrie.exchange/transfer/withdraw?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&dest=0005538936&dest_extra=000013
+https://api.cowrie.exchange/transfer/withdraw?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&amount=1200&dest=0005538936&dest_extra=000013
 ```
 
 ## Request Parameters
@@ -94,12 +87,9 @@ Name|Description
 ----|-----------
 asset_code|Asset code to withdraw (NGNT)
 account|Stellar public key address that initiates the withdaw request
+amount|Amount to withdraw
 dest|10 digit nuban account number
-dest_extra|6 digit bank sort code
-memo|Stellar memo (optional)
-memo_type|Stellar memo type id, text, hash (option)
-type|Type of deposit, either bank or card (optional)
-email_address|Email address for notifications (optional)
+dest_extra|6 digit bank sort code or bank name code
 
 # Withdraw Response
 A successful withdraw request will return the following JSON encoded response
@@ -109,10 +99,11 @@ A successful withdraw request will return the following JSON encoded response
 {
     account_id: 'GBQZOJE2GWJU5VBT6NBLD2F3IOVOYUBDAXYUU32XMHDF4RMDOURWV3GT',
     memo_type: 'text',
-    memo: '0000130005538936',
+    memo: 'ae5fa4d1',
     eta: 120,
     min_amount: 100,
-    fee_fixed: 200
+    fee_fixed: 200,
+    extra_info: "Alice Hancock"
 }
 ```
 
@@ -126,9 +117,9 @@ min_amount|Minimum withdrawal amount
 fee_fixed|Fee charged for this transaction
 
 ## NGNT Withdrawal Instructions
-To credit account: GTBank account 0005538936 from your XLM wallet, send a payment with the following details
+To credit account: GTBank account 0005538936 from your Stellar wallet, send a payment with the following details
 * Address: GBQZOJE2GWJU5VBT6NBLD2F3IOVOYUBDAXYUU32XMHDF4RMDOURWV3GT
-* Memo: 0000130005538936
+* Memo: ae5fa4d1
 
 ## Bank Sort Codes
 The 6 digit bank sort codes are listed here. The bank_code parameter must be from  this list.

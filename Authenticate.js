@@ -1,7 +1,7 @@
 const StellarSdk = require('stellar-sdk');
 const Authentication = require('./SEP10');
 
-let accountSecret = 'SECRET-KEY';
+let accountSecret = 'SECRET-KEY'; // Replace with your account secret key
 let account = StellarSdk.Keypair.fromSecret(accountSecret);
 
 Authentication.challenge(account)

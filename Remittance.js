@@ -7,13 +7,13 @@ const networkPassphrase = 'Public Global Stellar Network ; September 2015';
 
 let NGNT = {asset:'NGNT', issuer: 'GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD'};
 
-let accountSecret = 'SECRET-KEY';
+let accountSecret = 'SECRET-KEY'; // Replace with your account secret key
 let source_account = StellarSdk.Keypair.fromSecret(accountSecret);
 
 let sender_id = '32c4f05c326440c3b29d22f8b7ea9fd3';
 let amount = '1000';
 let bank_name = 'GTBank';
-let account_number = '005509890';
+let account_number = '0005538936';
 
 let remittance = {
     stellar_account : source_account.publicKey(),

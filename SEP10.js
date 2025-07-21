@@ -7,8 +7,8 @@ const networkPassphrase = 'Public Global Stellar Network ; September 2015';
 const url = 'https://api.cowrie.exchange/web_auth';
 
 module.exports = {
-    challenge: (account) => {
-        var query = querystring.stringify({ account: account.publicKey()});
+    challenge: (keyPair) => {
+        var query = querystring.stringify({ account: keyPair.publicKey()});
         var api = url + '?' + query;
         console.log(api);
         
@@ -27,7 +27,7 @@ module.exports = {
         }).then((body) => {
             //console.log('body: ' + JSON.stringify(body));
             var transaction = StellarSdk.TransactionBuilder.fromXDR(body.transaction, networkPassphrase);
-            transaction.sign(account);
+            transaction.sign(keyPair);
             return transaction.toXDR();
         }).catch((error) => {
             console.log(error);

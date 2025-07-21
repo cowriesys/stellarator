@@ -4,7 +4,7 @@ const networkPassphrase = 'Public Global Stellar Network ; September 2015';
 
 let NGNT = {asset:'NGNT', issuer: 'GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD'};
 
-let senderAccountSecret = 'SECRET-KEY';
+let senderAccountSecret = 'SECRET-KEY'; // Replace with your sender account secret key
 let destinationAccountAddress = 'GDI5EK4HNMBHJJQGP3GUXQJIIOHU2CJO3LABPWD6WYSPJZP5NP67TMNN';
 
 let senderAccount = StellarSdk.Keypair.fromSecret(senderAccountSecret);
@@ -18,7 +18,7 @@ horizon.loadAccount(senderAccount.publicKey())
         .addOperation(StellarSdk.Operation.payment({
             destination: destinationAccount.publicKey(),
             asset: new StellarSdk.Asset(NGNT.asset, NGNT.issuer),
-            amount: '10000000'
+            amount: '1000' // Amount to send
         })).setTimeout(0).build();
 
     transaction.sign(senderAccount);
