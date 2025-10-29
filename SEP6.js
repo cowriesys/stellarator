@@ -4,9 +4,9 @@ const querystring = require('querystring');
 const url = 'https://api.cowrie.exchange/transfer/';
 
 module.exports = {
-    deposit: (asset_code, account, amount) => {
+    deposit: (asset_code, account, amount, customer_id) => {
 
-        var query = querystring.stringify({ asset_code: asset_code, account: account, amount: amount });
+        var query = querystring.stringify({ asset_code: asset_code, account: account, amount: amount, customer_id: customer_id });
         var api = url + 'deposit?' + query;
         console.log(api);
 
@@ -39,9 +39,9 @@ module.exports = {
         return deposit_response;
     },
 
-    withdraw: (asset_code, account, amount, bankCode, bankAccount) => {
+    withdraw: (asset_code, account, amount, customer_id, bankCode, bankAccount) => {
 
-        var query = querystring.stringify({ asset_code: asset_code, account: account, amount:amount, dest_extra: bankCode, dest: bankAccount});
+        var query = querystring.stringify({ asset_code: asset_code, account: account, amount:amount, customer_id: customer_id, dest_extra: bankCode, dest: bankAccount});
         var api = url + 'withdraw?' + query;
         console.log(api);
 

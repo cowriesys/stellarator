@@ -4,8 +4,9 @@ let NGNT = {asset:'NGNT', issuer: 'GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYR
 
 var destinationAccount = 'GDPSWKVZST3EQ4TNZ7LENUCDA3U3C4SL23FNPB6JFCCWI5XKEIMFAG52';
 var amount = 1000;
+var customerId = "customer_id"
 
-Transfer.deposit(NGNT.asset, destinationAccount, amount)
+Transfer.deposit(NGNT.asset, destinationAccount, amount, customerId)
 .then((deposit) => {
     console.log(JSON.stringify(deposit));
 });

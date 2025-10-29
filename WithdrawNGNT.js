@@ -1,16 +1,17 @@
-const Transfer = require('./SEP6');
 const StellarSdk = require('stellar-sdk');
+const Transfer = require('./SEP6');
 
 let NGNT = {asset:'NGNT', issuer: 'GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD'};
 let senderAccountSecret = 'SECRET-KEY'; // Replace with your sender account secret key
 let senderAccount = StellarSdk.Keypair.fromSecret(senderAccountSecret);
 
 var amount = 1000;
+var customerId = "customer_id";
 var bankAccountNumber = '0005538936';
 var bank = '000013';
 
 /**WIHDRAW NGNT**/
-Transfer.withdraw(NGNT.asset, senderAccount, amount, bank, bankAccountNumber)
+Transfer.withdraw(NGNT.asset, senderAccount, amount, customer_id, bank, bankAccountNumber)
 .then((withdraw) => {
 
     horizon.loadAccount(senderAccount.publicKey())

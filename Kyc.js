@@ -18,7 +18,7 @@ Authentication.challenge(account)
         console.log('token: ' + token);
 
         //SEP12 HERE        
-        const fileName = 'uploads\\passport.jpg';
+        const fileName = 'passport.jpg';
         console.log('fileName', fileName);        
         const data = fs.readFileSync(fileName);
         console.log('data', data);

@@ -27,7 +27,7 @@ The Cowrie Exhange API is based on a HTTP/REST architecture. API clients issue H
 # Deposit Request
 Call this endpoint to initiate a deposit
 ```
-https://api.cowrie.exchange/transfer/deposit?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&amount=1000
+https://api.cowrie.exchange/transfer/deposit?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&amount=1000&customer_id=b24d05fed7ad420fa9e2e7968215e400
 ```
 
 ## Request Parameters
@@ -36,6 +36,7 @@ Name|Description
 asset_code|asset code to deposit (NGNT)
 account|Stellar public key address
 amount|Amount to deposit
+customer_id| Customer id onboarded via SEP12
 
 # Deposit Response
 A successful deposit request will return the following JSON encoded response
@@ -43,6 +44,7 @@ A successful deposit request will return the following JSON encoded response
 **HTTP 200 OK**
 ```javascript
 {
+    id: "92a4e33c12634ea1"
     eta: 120,
     min_amount: 200,
     fee_fixed: 100,
@@ -59,6 +61,7 @@ A successful deposit request will return the following JSON encoded response
 
 Response Fields|Description
 ----|----------------------
+id|Unique ID for this deposit
 eta|Expected Time of Arrival in seconds
 min_amount|The minimum acceptable deposit amount
 fee_fixed|Fee charged for this deposit
@@ -79,7 +82,7 @@ Launch your internet banking website or mobile banking app and make a transfer u
 # Withdraw Request
 Call this endpoint to initiate a withdrawal
 ```
-https://api.cowrie.exchange/transfer/withdraw?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&amount=1200&dest=0005538936&dest_extra=000013
+https://api.cowrie.exchange/transfer/withdraw?asset_code=NGNT&account=GBS6VGR6UJYKXEPTPSU4CTPY7GFRLO4BYXFTJH3RHX4V2WIQHSRKEKKB&amount=1200&customer_id=b24d05fed7ad420fa9e2e7968215e400&dest=0005538936&dest_extra=000013
 ```
 
 ## Request Parameters
@@ -88,6 +91,7 @@ Name|Description
 asset_code|Asset code to withdraw (NGNT)
 account|Stellar public key address that initiates the withdaw request
 amount|Amount to withdraw
+customer_id| Customer id onboarded via SEP12
 dest|10 digit nuban account number
 dest_extra|6 digit bank sort code or bank name code
 
@@ -97,9 +101,10 @@ A successful withdraw request will return the following JSON encoded response
 **HTTP 200 OK**
 ```javascript
 {
+    id: "2cd764e19cd64a93",
     account_id: 'GBQZOJE2GWJU5VBT6NBLD2F3IOVOYUBDAXYUU32XMHDF4RMDOURWV3GT',
     memo_type: 'text',
-    memo: 'ae5fa4d1',
+    memo: '2cd764e19cd64a93',
     eta: 120,
     min_amount: 100,
     fee_fixed: 200,
@@ -109,6 +114,7 @@ A successful withdraw request will return the following JSON encoded response
 
 Response Fields|Description
 ----|----------------------
+id|Unique ID for this withdrawal
 account_id|Stellar public key to send the withdrawal payment
 memo_type|Stellar memo type
 memo|Bank account name
@@ -120,6 +126,7 @@ fee_fixed|Fee charged for this transaction
 To credit account: GTBank account 0005538936 from your Stellar wallet, send a payment with the following details
 * Address: GBQZOJE2GWJU5VBT6NBLD2F3IOVOYUBDAXYUU32XMHDF4RMDOURWV3GT
 * Memo: ae5fa4d1
+
 
 ## Bank Sort Codes
 The 6 digit bank sort codes are listed here. The bank_code parameter must be from  this list.
@@ -146,6 +153,40 @@ UnionBank|000018
 UnityBank|000011
 WemaBank|000017
 ZenithBank|000015
+
+## Transaction Query
+Call this endpoint to query for a single tranaction by it's unique id
+```
+https://api.cowrie.exchange/transfer/transaction?id=2cd764e19cd64a93
+```
+
+# Transaction Query Response
+A successful transation query request will return the following JSON encoded response
+
+**HTTP 200 OK**
+```javascript
+{
+    transaction: {
+        id: "2cd764e19cd64a93",
+        kind: "withdrawal",
+        status: "pending_user_transfer_start",
+        amount_in: "0",
+        amount_out: "0",
+        amount_fee: "0",
+        started_at: "2025-10-29 14:56:04"
+    }
+}
+```
+
+Response Fields|Description
+----|----------------------
+id|Unique ID for this transaction
+kind|Either deposit or withdrawal
+status|state of this transaction. Can be pending_user_transfer_start, completed or error
+amount_in|Amount received for this transaction
+amount_out|Amount sent out for this transaction
+amount_fee|Fee charged for this transaction
+started_at|Time stamp when the transaction was started
 
 ## Response Error Codes
 A failed request for any of the APIs will result in one of the following HTTP response error codes.
