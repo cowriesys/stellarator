@@ -278,12 +278,6 @@ HTTP Code|HTTP Status|Description
    ```text
    # Your Stellar account secret (used by Authenticate.js, Kyc.js, Remittance.js)
    ACCOUNT_SECRET=your_stellar_secret_key_here
-   
-   # Sender account secret (used by WithdrawNGNT.js and SendNGNT.js)
-   SENDER_ACCOUNT_SECRET=your_sender_stellar_secret_key_here
-   
-   # Destination account secret (used by TrustNGNT.js)
-   DESTINATION_ACCOUNT_SECRET=your_destination_stellar_secret_key_here
    ```
 
 ### Updating Script Variables
@@ -295,7 +289,7 @@ Before running the samples, update the hardcoded variables in each script:
 - **CUSTOMER-ID**: Your unique customer ID from Cowrie Exchange onboarding (obtained during SEP12 KYC verification)
 
 #### `WithdrawNGNT.js`
-- **BANK-ACCOUNT-NUMBER**: Your Nigerian bank account number (10-digit NUBAN format, e.g., `0005538936`)
+- **BANK-ACCOUNT-NUMBER**: Your Nigerian bank account number (10-digit NUBAN format)
 - **BANK-SORT-CODE**: Your bank's 6-digit sort code. See the bank codes table in the API documentation below.
 - **CUSTOMER-ID**: Your Cowrie Exchange customer ID
 
@@ -304,10 +298,6 @@ Before running the samples, update the hardcoded variables in each script:
 
 #### `TrustNGNT.js`
 - Uses `DESTINATION_ACCOUNT_SECRET` from `.env` (no additional variables)
-
-#### `Kyc.js`
-- Replace personal information (name, email, phone, ID details) with your actual data
-- Provide a `passport.jpg` image file in the project root
 
 ### Available npm Scripts
 
@@ -338,8 +328,6 @@ npm run send
 2. **Configure `.env`:**
    ```bash
    ACCOUNT_SECRET=SCXXXXXX...
-   SENDER_ACCOUNT_SECRET=SCYYYY...
-   DESTINATION_ACCOUNT_SECRET=SCZZZZ...
    ```
 
 3. **Run authentication first:**
