@@ -1,14 +1,22 @@
+// load environment variables (uses dotenv; install with `npm install dotenv`)
+require('dotenv').config();
+
 const StellarSdk = require('stellar-sdk');
 const Transfer = require('./SEP6');
 
 let NGNT = {asset:'NGNT', issuer: 'GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD'};
-let senderAccountSecret = 'SECRET-KEY'; // Replace with your sender account secret key
-let senderAccount = StellarSdk.Keypair.fromSecret(senderAccountSecret);
+
+// read sender secret from .env
+const senderAccountSecret = process.env.SENDER_ACCOUNT_SECRET;
+if (!senderAccountSecret) {
+    throw new Error('Please set SENDER_ACCOUNT_SECRET in your .env file');
+}
+const senderAccount = StellarSdk.Keypair.fromSecret(senderAccountSecret);
 
 var amount = 1000;
-var customerId = "customer_id";
-var bankAccountNumber = '0005538936';
-var bank = '000013';
+var customerId = "CUSTOMER-ID";
+var bankAccountNumber = 'BANK-ACCOUNT-NUMBER';
+var bank = 'BANK-SORT-CODE';
 
 /**WIHDRAW NGNT**/
 Transfer.withdraw(NGNT.asset, senderAccount, amount, customer_id, bank, bankAccountNumber)

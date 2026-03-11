@@ -1,20 +1,25 @@
 const fetch = require('node-fetch');
 const querystring = require('querystring');
+const { loadToken } = require('./TokenStore');
 
 const url = 'https://api.cowrie.exchange/transfer/';
+const jwt = loadToken();
 
 module.exports = {
     deposit: (asset_code, account, amount, customer_id) => {
-
+        
         var query = querystring.stringify({ asset_code: asset_code, account: account, amount: amount, customer_id: customer_id });
         var api = url + 'deposit?' + query;
-        console.log(api);
+        console.log(api);       
 
         var deposit_response = 
 
         fetch(api, {
-            method: 'get',
-            
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwt}`
+            }            
         }).then((response) => {
 
             console.log('deposit_response: ' + response.status + ' ' + response.statusText);
@@ -48,8 +53,11 @@ module.exports = {
         var withdraw_response = 
 
         fetch(api, {
-            method: 'get',
-            
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwt}`
+            }            
         }).then((response) => {
 
             console.log('withdraw_response: ' + response.status + ' ' + response.statusText);

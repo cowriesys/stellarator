@@ -1,11 +1,18 @@
+// load env variables
+require('dotenv').config();
+
 const StellarSdk = require("stellar-sdk");
 const horizon = new StellarSdk.Horizon.Server("https://horizon.stellar.org");
 const networkPassphrase = 'Public Global Stellar Network ; September 2015';
 
 let NGNT = {asset:'NGNT', issuer: 'GAWODAROMJ33V5YDFY3NPYTHVYQG7MJXVJ2ND3AOGIHYRWINES6ACCPD'};
 
-let destinationAccountSecret = 'SECRET-KEY'; // Replace with your destination account secret key
-let destinationAccount = StellarSdk.Keypair.fromSecret(destinationAccountSecret);
+// read destination secret from .env
+const destinationAccountSecret = process.env.DESTINATION_ACCOUNT_SECRET;
+if (!destinationAccountSecret) {
+    throw new Error('Please set DESTINATION_ACCOUNT_SECRET in your .env file');
+}
+const destinationAccount = StellarSdk.Keypair.fromSecret(destinationAccountSecret);
 
 
 /**TRUST NGNT**/

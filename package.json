@@ -1,0 +1,21 @@
+{
+  "name": "stellarator",
+  "version": "1.0.0",
+  "description": "Cowrie Exchange API examples for NGNT operations on Stellar",
+  "main": "Authenticate.js",
+  "scripts": {
+    "authenticate": "node Authenticate.js",
+    "trust": "node TrustNGNT.js",
+    "deposit": "node DepositNGNT.js",
+    "withdraw": "node WithdrawNGNT.js",
+    "send": "node SendNGNT.js"
+  },
+  "author": "gdini2003",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "form-data": "^4.0.0",
+    "node-fetch": "^2.7.0",
+    "stellar-sdk": "^10.0.0"
+  }
+}
